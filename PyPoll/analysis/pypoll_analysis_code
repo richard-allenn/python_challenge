@@ -69,9 +69,10 @@ print(f'the winner is {winner_name} with {winner} votes')
 print( )
 
 
-
+# open file for results
 file = open('election_results.txt','w')
     
+# print lines 
 file.write('election results')
 file.write('\n')
 file.write('----------------------------')

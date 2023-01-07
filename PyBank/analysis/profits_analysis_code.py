@@ -72,6 +72,7 @@ with open(csvpath) as csvfile:
 
     # open and read the file
     file = open('profits_analysis.txt','w')
+    # write lines
     
     file.write('Financial Analysis')
     file.write('\n')
