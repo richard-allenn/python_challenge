@@ -1,0 +1,7 @@
+Financial Analysis
+----------------------------
+there is 86 months total
+the total profit/loss is $22564198
+the average change is $4448.13
+the greatest increase was Aug-16 with $1862002
+the greatest decrease was Feb-14 with $-1825558

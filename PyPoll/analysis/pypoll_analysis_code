@@ -1,0 +1,86 @@
+import os
+import csv
+
+#locate csv file
+csvpath = os.path.join('..', 'resources', 'election_data.csv')
+
+# open and read the file
+with open(csvpath) as csvfile:
+    csv_reader = csv.DictReader(csvfile, delimiter=',')
+
+    # set variables
+    total_votes = 0
+    vote_count = []
+    candidates = []
+
+    # count total number of votes cast
+    for row in csv_reader:
+        total_votes = total_votes + 1
+        candidates.append(row['Candidate'])
+
+    # of votes each candidate won
+    vote_count = [[candidates.count(person),person] for person in set(candidates)]
+
+
+# defining variables 
+winner = 0
+winner_name = str
+candidate_1_name = None
+candidate_2_name = None
+candidate_3_name = None
+candidate_1_percentage = 0
+candidate_2_percentage = 0
+candidate_3_percentage = 0
+
+#assign names and score to their own variable
+
+for candidate in vote_count:
+   
+    if int(candidate[0]) > winner:
+        winner = candidate[0]
+        winner_name = candidate[1] 
+    
+    
+    if candidate_1_name == None:
+        candidate_1_name = candidate[1]
+        candidate_1_votes = candidate[0]
+
+    elif candidate_2_name == None:
+            candidate_2_name = candidate[1]
+            candidate_2_votes = candidate[0]
+
+    elif candidate_3_name == None:
+                candidate_3_name = candidate[1]
+                candidate_3_votes = candidate[0]
+            
+    
+# calculate percentages of votes for candidates
+candidate_1_percentage = round(candidate_1_votes / total_votes *100) 
+candidate_2_percentage = round(candidate_2_votes / total_votes *100) 
+candidate_3_percentage = round(candidate_3_votes / total_votes *100) 
+
+# print results
+print( )
+print(f'total number of votes is {total_votes}')    
+print(f'{candidate_1_name} recieved {candidate_1_percentage}% of votes with {candidate_1_votes}')
+print(f'{candidate_2_name} recieved {candidate_2_percentage}% of votes with {candidate_2_votes}')
+print(f'{candidate_3_name} recieved {candidate_3_percentage}% of votes with {candidate_3_votes}') 
+print(f'the winner is {winner_name} with {winner} votes')
+print( )
+
+
+
+file = open('election_results.txt','w')
+    
+file.write('election results')
+file.write('\n')
+file.write('----------------------------')
+file.write('\n')
+file.write(f'total votes: {total_votes}''\n')
+file.write('----------------------------''\n')
+file.write(f'{candidate_1_name} recieved {candidate_1_percentage}% of votes with {candidate_1_votes} ''\n')    
+file.write(f'{candidate_2_name} recieved {candidate_2_percentage}% of votes with {candidate_2_votes} ''\n')
+file.write(f'{candidate_3_name} recieved {candidate_3_percentage}% of votes with {candidate_3_votes} ''\n')      
+file.write('----------------------------''\n')
+file.write(f'the winner is {winner_name}''\n')
+file.write('----------------------------''\n')
